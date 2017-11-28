@@ -2,6 +2,15 @@
 ====================================================== */
 
 
+@media (max-width: 1380px) {
+    .photo-thumb{
+        width:200px;
+        height:200px;
+    }
+}
+
+
+
 @media (max-width: 1024px) {
 
     .intro,
@@ -21,6 +30,12 @@
     }
     .intro .intro-slider .container figure img {
         max-height: 400px;
+    }
+     .photo-thumb{
+        width:150px;
+        height:150px;
+        margin: auto;
+        margin-left: 10px;
     }
 
 
@@ -204,6 +219,10 @@
         writing-mode: inherit;
     }
 
+    .soc-icons{
+    width: 22%;
+    }
+
 }
 
 
@@ -348,6 +367,10 @@
     .fil-facebook{
         padding-bottom: 10%;
         padding-top: 5%;
+    }
+
+    .soc-icons{
+        width: 35%;
     }
 
     /*Distribution*/
@@ -549,6 +572,18 @@
     }
     .download .btn {
         margin-bottom: 10px;
+    }
+
+    .photo-thumb{
+        width:100px;
+        height:100px;
+        margin: auto;
+        margin-left: 10px;
+    }
+
+    /*Index*/
+    .soc-icons{
+        width: 60%;
     }
 
 }

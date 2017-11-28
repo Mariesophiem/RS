@@ -864,6 +864,9 @@ ul.extra-features i{
     margin-bottom: 5px;
 }
 
+.footer-copy{
+    text-align: center;
+}
 /*********************************************/
 /*******************ACCUEIL*******************/
 /*********************************************/
@@ -950,10 +953,17 @@ body, html{
     text-align: center;
 }
 
-.snapwidget{
-    padding-top: 5%;
-    padding-right: 15%;
-    padding-left: 15%;
+
+.soc-icons{
+    width: 17%;
+    display: block;
+    margin: auto;
+    background-color: black;
+    padding-top: 2%;
+}
+
+.black{
+    background-color: black;
 }
 
 
@@ -1270,3 +1280,39 @@ background-color: rgba(180, 140, 88, 0.5);
 .link-mentions-legales{
     color: grey;
 }
+
+/*PHOTO FB*/
+
+.photo-thumb{
+        width:280px;
+        height:280px;
+        display: inline-block;
+        border: thin solid #000000;
+        border-radius: 8px;
+        margin: auto 0.5em auto 0.5em;
+    }
+ 
+    div#blueimp-gallery div.modal {
+        overflow: visible;
+    }
+
+    .row-fb{
+        float: none;
+        margin: auto;
+
+    }
+
+.page-header{
+    color: white;
+    border-bottom: solid 1px #B48C58;
+}
+
+    .container-fb {
+        width: 100%;
+        padding: 0;
+        background-color: black;
+    }
+
+    .btn-fb {
+        letter-spacing: 1vw;
+    }

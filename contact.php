@@ -56,16 +56,16 @@ EOT;
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <!-- Meta Data -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Prenez contact avec nous via cette page">
+    <meta name="description" content="Real Spirit - Prenez contact avec nous via cette page">
     <meta name="author" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/icon.png">
     <title>Real Spirit : Page de contact</title>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -117,7 +117,7 @@ EOT;
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <!-- begin navigation items -->
-                    <li><a href="index_dark.html">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="distribution.html">Distribution</a></li>
                     <li><a href="cocktails.html">Bar à cocktails</a></li>
                     <li><a href="team-building.html">Team building</a></li>
@@ -198,14 +198,14 @@ EOT;
                     <!-- begin logo footer -->
                     <img src="images/footer_logodark.png" alt="Logo de Real Spirit">
                     <!-- end logo footer -->
-                    <p><small>&copy; Copyright - 2017 - Real Spirit - All Rights Reserved - <a href="mentions-legales.html" class="link-mentions-legales">Mentions Légales</a></small></p>
+  
                 </div>
                 <div class="col-md-2 col-md-offset-1 col-sm-3">
                     <h4>Plan du site</h4>
                     <div class="underline-small"></div>
                     <ul>
                         <li>
-                            <a href="index.html">Accueil</a>
+                            <a href="index.php">Accueil</a>
                         </li>
                         <li>
                             <a href="distribution.html">La distribution</a>
@@ -252,6 +252,9 @@ EOT;
                     </ul>
                 </div>
             </div>
+                               <div class="footer-copy">
+                    <p><small>&copy; Copyright - 2017 - Real Spirit - All Rights Reserved - <a href="mentions-legales.html" class="link-mentions-legales">Mentions Légales</a> - L'abus d'alcool est dangereux pour la santé. A consommer avec modération.</small></p>
+        </div>
         </div>
     </footer>
     <!-- end footer section -->

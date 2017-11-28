@@ -1,5 +1,16 @@
+<?php
+// $album_id = isset($_GET['album_id']) ? $_GET['album_id'] : die('Album ID not specified.');
+$album_id = "271243346571253";
+// $album_name = isset($_GET['album_name']) ? $_GET['album_name'] : die('Album name not specified.');
+ $album_name = "Photos du journal";
+
+
+// $page_title = "{$album_name} Photos";
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <!-- Meta Data -->
@@ -8,7 +19,7 @@
     <meta name="description" content="Bienvenue sur le site de Real Spirit">
     <meta name="author" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/icon.png">
     <title>Real Spirit bienvenue sur notre site</title>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -27,6 +38,11 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <!-- blue imp gallery -->
+
+
+    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
     <!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -121,81 +137,44 @@
 
     <!-- debut section menu-page-home -->
 
-
 <div class="menu-accueil">
 
 <div class="row">
     
 <a href="distribution.html">
-    <div class="col-sm-12 col-md-5 menu-distrib">
+    <div class="col-xs-12 col-md-5 menu-distrib">
         <h3 class="h3-distrib-home"> <b>Distribution</b></h3>
     </div>
 </a>
-    <div class="col-sm-12 col-md-5" ">
+    <div class="col-xs-12 col-md-5" ">
         <div class="row">
             <a href="degustation.html">
-            <div class="col-sm-12 col-md-12 menu-degustation">
+            <div class="col-xs-12 col-md-12 menu-degustation">
                 <h3 class="h3-degustation-home">Dégustation</h3>
             </div>
         </a>
         </div>
         <div class="row">
             <a href="cocktails.html">
-            <div class="col-sm-12 col-md-6 menu-cocktails">
+            <div class="col-xs-12 col-md-6 menu-cocktails">
                 <h3 class="h3-cocktails-home">Bar à Cocktails</h3>
             </div>
         </a>
         <a href="contact.html" >
-            <div class="col-sm-12 col-md-6 menu-contact"> 
+            <div class="col-xs-12 col-md-6 menu-contact"> 
                 <h3 class="h3-contact-home"><b><i>Contact</i></b></h3>
             </div>
         </a>
         </div>
     </div>
     <a href="team-building.html">
-    <div class="col-sm-12 col-md-2 menu-team">
+    <div class="col-xs-12 col-md-2 menu-team">
         <h3 class="h3-team-home"><i>Team Building</i></h3>
     </div>
 </a>
 </div>
 
 </div>
-
-
-
-
-<!-- 
-
-
-        <div class="container-menu-home">
-
-            <a href="distribution.html" class="grid-item" id="grid-distribution">
-                <h3 class="h3-distrib-home"> <b>Distribution</b></h3>
-            </a>
-
-            <a href="degustation.html" class="grid-item" id="grid-degustation">
-                <h3 class="h3-degustation-home">Dégustation</h3>
-            </a>
-
-
-
-            <a href="cocktails.html" class="grid-item" id="grid-bar">
-                <h3 class="h3-cocktails-home">Bar à Cocktails</h3>
-            </a>
-            <a href="contact.html" class="grid-item" id="grid-contact">
-                <h3 class="h3-contact-home"><b><i>Contact</i></b></h3>
-            </a>
-
-        
-
-            <a href="team-building.html" class="grid-item" id="grid-team-building">
-                <h3 class="h3-team-home"><i>Team Building</i></h3>
-            </a>
-
-
-
-        </div>
- -->
 
 
     <!-- fin menu-page-home -->
@@ -206,7 +185,7 @@
 			<div class="row">
 				<div class="col-md-12">	
 					<h2>Retrouvez nous sur </h2> 
-					<br><br><h2><button class="btn" > <a href="https://www.facebook.com/REALSpiritLuxembourg/">FACEBOOK</a></button></h2>
+					<br><br><h2><button class="btn btn-fb"><a href="https://www.facebook.com/REALSpiritLuxembourg/">FACEBOOK</a></button></h2>
 				</div>
 			</div>
 		</div>
@@ -219,10 +198,104 @@
 
 
 
-<!-- begin features section -->
 
-<div class="features" id="features">
+<div class="container container-fb">
+    <div class="row row-fb col-md-8">
+
+<?php
+echo "<h1 class='page-header'>";
+    echo "Nos dernières photos";
+echo "</h1>";
+ 
+$access_token="2014451118775295|1B9-TVb3U7D-Ic3f1MidYl-XCH4";
+$json_link = "https://graph.facebook.com/v2.3/{$album_id}/photos?fields=source,images,name&access_token={$access_token}";
+$json = file_get_contents($json_link);
+ 
+$obj = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
+ 
+$photo_count = count($obj['data']);
+
+for($x=0; $x<=11; $x++){
+ 
+    // $source = isset($obj['data'][$x]['source']) ? $obj['data'][$x]['source'] : "";
+    $source = isset($obj['data'][$x]['images'][0]['source']) ? $obj['data'][$x]['images'][0]['source'] : ""; //hd image
+    $name = isset($obj['data'][$x]['name']) ? $obj['data'][$x]['name'] : "";
+ 
+    echo "<a href='{$source}' data-gallery>";
+        echo "<div class='photo-thumb' style='background: url({$source}) 0% 50% / cover no-repeat;'>";
+ 
+        echo "</div>";
+    echo "</a>";
+ 
+}
+?>
+
+
+</div>
+</div>
+ 
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- begin features section -->
+<div class="black">
+<div class="features soc-icons" id="features">
     <div class="features wow fadeInLeft animated" data-wow-offset="10" data-wow-duration="1.5s">
+        
         <!-- begin single feature item -->
         <div class="feature">
             <div class="icon-container">
@@ -245,7 +318,7 @@
         <!-- end single feature item -->
     </div>
 </div>
-
+</div>
 
 
 
@@ -262,14 +335,13 @@
                     <!-- begin logo footer -->
                     <img src="images/footer_logodark.png" alt="Logo de Real Spirit">
                     <!-- end logo footer -->
-                    <p><small>&copy; Copyright - 2017 - Real Spirit - All Rights Reserved - <a href="mentions-legales.html" class="link-mentions-legales">Mentions Légales</a></small></p>
                 </div>
                 <div class="col-md-2 col-md-offset-1 col-sm-3">
                     <h4>Plan du site</h4>
                     <div class="underline-small"></div>
                     <ul>
                         <li>
-                            <a href="index.html">Accueil</a>
+                            <a href="index.php">Accueil</a>
                         </li>
                         <li>
                             <a href="distribution.html">La distribution</a>
@@ -299,7 +371,7 @@
                         </li>
                         <li>
                             <a href="contact.php">Contact<span class="jobs">Venez vite!</span>
-						</a>
+                        </a>
                         </li>
                     </ul>
                 </div>
@@ -316,6 +388,9 @@
                     </ul>
                 </div>
             </div>
+                   <div class="footer-copy">
+                    <p><small>&copy; Copyright - 2017 - Real Spirit - All Rights Reserved - <a href="mentions-legales.html" class="link-mentions-legales">Mentions Légales</a> - L'abus d'alcool est dangereux pour la santé. A consommer avec modération.</small></p>
+        </div>
         </div>
     </footer>
     <!-- end footer section -->
@@ -330,8 +405,26 @@
     <script src="js/jquery.nav.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/jquery.jigowatt.js"></script>
+
+    <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="js/bootstrap-image-gallery.min.js"></script>
+
+
     <!-- Custom Javascript -->
     <script src="js/main.js"></script>
+
+    <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+ 
+<!-- to make photos full view -->
+<script>
+$('#blueimp-gallery').data('useBootstrapModal', false);
+$('#blueimp-gallery').toggleClass('blueimp-gallery-controls', true);
+</script>
+
+
 </body>
 
 </html>
